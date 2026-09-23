@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local to-do data created at runtime
+todos.json
+
+# Instructor-only answer key -- never publish this
+INSTRUCTOR_NOTES.md
