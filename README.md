@@ -1,50 +1,28 @@
-# My To-Do List
+# Agentic Coding — Assignments
 
-A small, **colorful command-line to-do list app** written in Python. Your items
-are saved to a local `todos.json` file, so they stick around between commands.
+A collection of hands-on assignments for learning to code with **agentic tools**
+like Cursor and Claude Code. Each assignment is a small, self-contained project
+that you work on using an AI agent — practicing the real workflow:
 
-> You have probably never seen this codebase before. That's the point.
-> Use your agentic coding tool (Cursor / Claude Code) to **understand it first**,
-> then do the exercise in [`ASSIGNMENTS.md`](./ASSIGNMENTS.md).
->
-> New to this? Start with [`GETTING_STARTED.md`](./GETTING_STARTED.md).
+> **understand a codebase → plan a change → build it → verify the AI's work**
 
-## Setup
+## Assignments
 
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
+| # | Folder | What you'll do |
+|---|--------|----------------|
+| 1 | [`assignment-1-todo-cli/`](./assignment-1-todo-cli/) | Understand a small command-line to-do list app, add a `search` feature, and catch a bug the AI might miss. |
 
-## Use it
+_More assignments will be added here over time._
 
-```bash
-python todo.py list                              # show your to-do list
-python todo.py list --priority high              # only high-priority items
-python todo.py add "Read the codebase" --priority high
-python todo.py done 1                            # check off item #1
-python todo.py delete 2                          # remove item #2
-```
+## How to use this repo
 
-The first time you run it, the list is seeded with a few sample items.
+1. **Fork** this repo to your own GitHub account.
+2. **Clone** your fork and open the assignment folder you're working on.
+3. Read that assignment's own `README.md` and `GETTING_STARTED.md`, then follow
+   its `ASSIGNMENTS.md`.
+4. Submit your work as a **pull request** (details in each assignment's
+   `GETTING_STARTED.md`).
 
-## Run the tests
+## Ground rule for every assignment
 
-```bash
-pytest
-```
-
-## Project layout
-
-```
-todo.py                # command-line entry point (argparse)
-todolist/
-  __init__.py
-  models.py            # the Task dataclass (one to-do item)
-  store.py             # saves/loads items to todos.json
-  validation.py        # checks a new item's fields
-  commands.py          # what each command does
-  display.py           # the colorful table + progress bar (uses `rich`)
-tests/                 # smoke tests (happy path only)
-```
+> **Read every line the AI writes. You own the code, not the AI.**
