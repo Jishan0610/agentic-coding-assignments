@@ -11,6 +11,18 @@ def cmd_list(store, priority=None):
     return 0
 
 
+def find_tasks(store, text):
+    """Return tasks whose title contains ``text``, ignoring case."""
+    needle = text.lower()
+    return [t for t in store.list() if needle in t.title.lower()]
+
+
+def cmd_search(store, text):
+    tasks = find_tasks(store, text)
+    display.render_tasks(tasks, heading=f'Search: "{text}"')
+    return 0
+
+
 def cmd_add(store, title, priority):
     try:
         data = validate_new_task(title, priority)

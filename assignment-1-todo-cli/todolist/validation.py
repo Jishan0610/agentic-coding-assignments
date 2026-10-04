@@ -18,7 +18,7 @@ def validate_new_task(title, priority):
     Raises:
         ValidationError: if the input is invalid.
     """
-    if not title:
+    if not title or not title.strip():
         raise ValidationError("title is required")
 
     if priority not in VALID_PRIORITIES:

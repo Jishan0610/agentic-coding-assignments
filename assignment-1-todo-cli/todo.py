@@ -26,6 +26,9 @@ def build_parser():
         "--priority", choices=VALID_PRIORITIES, help="filter by priority"
     )
 
+    p_search = sub.add_parser("search", help="find tasks by title")
+    p_search.add_argument("text", help="text to look for (case-insensitive)")
+
     p_add = sub.add_parser("add", help="add a new task")
     p_add.add_argument("title", help="the task title")
     p_add.add_argument(
@@ -47,6 +50,8 @@ def main(argv=None):
 
     if args.command == "list":
         return commands.cmd_list(store, priority=args.priority)
+    if args.command == "search":
+        return commands.cmd_search(store, args.text)
     if args.command == "add":
         return commands.cmd_add(store, args.title, args.priority)
     if args.command == "done":

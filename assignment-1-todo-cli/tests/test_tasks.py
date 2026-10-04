@@ -5,6 +5,7 @@ what they *don't* cover. Run with:  pytest
 """
 import pytest
 
+from todolist.commands import find_tasks
 from todolist.store import TaskStore
 from todolist.validation import ValidationError, validate_new_task
 
@@ -54,6 +55,20 @@ def test_validation_requires_title():
         validate_new_task("", "medium")
 
 
+def test_validation_rejects_spaces_only_title():
+    with pytest.raises(ValidationError):
+        validate_new_task("   ", "medium")
+
+
 def test_validation_rejects_bad_priority():
     with pytest.raises(ValidationError):
         validate_new_task("ok", "urgent")
+
+
+def test_search_is_case_insensitive(store):
+    titles = [t.title for t in find_tasks(store, "DOC")]
+    assert titles == ["Write onboarding doc"]
+
+
+def test_search_no_match_returns_empty(store):
+    assert find_tasks(store, "zzz") == []
